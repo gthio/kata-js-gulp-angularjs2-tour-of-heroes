@@ -1,6 +1,10 @@
+.vscode
+.tsdrc
+.typingsrc
+npm-debug.log
 typings
+node_modules
+bower_components
+jspm_packages
 app/**/*.js
 app/**/*.map
-node_modules
-jspm_packages
-bower_components
