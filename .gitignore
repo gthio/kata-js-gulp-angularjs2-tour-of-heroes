@@ -1,6 +1,7 @@
 .vscode
 .tsdrc
 .typingsrc
+.build
 npm-debug.log
 typings
 node_modules

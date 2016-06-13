@@ -2,10 +2,22 @@ var gulp = require('gulp');
 var util = require('gulp-util');
 var del = require('del');
 var tslint = require('gulp-tslint');
+var sourcemaps = require('gulp-sourcemaps');
+var typescript = require('gulp-typescript');
 
 var gulpConfig = require('./gulp.config')();
+var tsConfig = require('./tsconfig.json');
 
 var $ = require('gulp-load-plugins')({lazy: true});
+
+gulp.task('tscompile', function(){
+  return gulp
+    .src(gulpConfig.tsFiles)
+    .pipe(sourcemaps.init())
+    .pipe(typescript(tsConfig.compilerOptions))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest(gulpConfig.buildApp));
+});
 
 gulp.task('tslint', function(){
   return gulp
