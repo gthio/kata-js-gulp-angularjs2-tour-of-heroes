@@ -6,6 +6,15 @@ module.exports = function(){
   var gulpConfig = {
       
     build: build,
+    
+    tsAppFiles: [
+      'app/**/*.ts',
+      ],
+      
+    tsFiles: [
+      'app/**/*.ts',
+      'typings/browser.d.ts'
+      ],      
   };  
   
   return gulpConfig;

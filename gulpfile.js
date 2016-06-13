@@ -1,9 +1,18 @@
 var gulp = require('gulp');
 var util = require('gulp-util');
 var del = require('del');
+var tslint = require('gulp-tslint');
+
 var gulpConfig = require('./gulp.config')();
 
 var $ = require('gulp-load-plugins')({lazy: true});
+
+gulp.task('tslint', function(){
+  return gulp
+    .src(gulpConfig.tsFiles)
+    .pipe(tslint())
+    .pipe(tslint.report('verbose'));
+});
 
 gulp.task('clean-build', function(done){
   clean(gulpConfig.build, done);
@@ -19,7 +28,6 @@ function clean(path, done){
 }
 
 function log(msg){
-
   if (typeof(msg) === 'object'){
     for (var item in msg){
 	  if (msg.hasOwnProperty(item)){
