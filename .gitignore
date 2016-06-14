@@ -1,5 +1,6 @@
 .vscode
 .tsdrc
+.bowerrc
 .typingsrc
 .build
 npm-debug.log
