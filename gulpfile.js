@@ -10,6 +10,9 @@ var tsConfig = require('./tsconfig.json');
 
 var $ = require('gulp-load-plugins')({lazy: true});
 
+gulp.task('help', $.taskListing);
+gulp.task('default', ['help']);
+
 gulp.task('tscompile', function(){
   return gulp
     .src(gulpConfig.tsFiles)
