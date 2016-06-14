@@ -4,6 +4,10 @@ var del = require('del');
 var tslint = require('gulp-tslint');
 var sourcemaps = require('gulp-sourcemaps');
 var typescript = require('gulp-typescript');
+var gulpPrint = require('gulp-print');
+var gulpIf = require('gulp-if');
+
+var args = require('yargs').argv;
 
 var gulpConfig = require('./gulp.config')();
 var tsConfig = require('./tsconfig.json');
@@ -16,6 +20,7 @@ gulp.task('default', ['help']);
 gulp.task('tscompile', function(){
   return gulp
     .src(gulpConfig.tsFiles)
+    .pipe(gulpIf(args.verbose, gulpPrint()))
     .pipe(sourcemaps.init())
     .pipe(typescript(tsConfig.compilerOptions))
     .pipe(sourcemaps.write('.'))

@@ -23,8 +23,10 @@
     "concurrently": "^2.0.0",
     "del": "^2.2.0",
     "gulp": "^3.9.1",
+    "gulp-if": "^2.0.1",
     "gulp-inject": "^4.1.0",
     "gulp-load-plugins": "^1.2.4",
+    "gulp-print": "^2.0.1",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-task-listing": "^1.0.1",
     "gulp-tslint": "^5.0.0",
@@ -35,6 +37,7 @@
     "tslint": "^3.11.0",
     "typescript": "^1.8.10",
     "typings": "^0.7.12",
-    "wiredep": "^4.0.0"
+    "wiredep": "^4.0.0",
+    "yargs": "^4.7.1"
   }
 }
