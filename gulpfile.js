@@ -15,6 +15,17 @@ var tsConfig = require('./tsconfig.json');
 
 var $ = require('gulp-load-plugins')({lazy: true});
 
+gulp.task('wiredep', function(){
+  var wiredep = require('wiredep').stream;
+  var options = gulpConfig.getWiredepDefaultOptions();
+  
+  return gulp
+    .src(gulpConfig.indexFile)
+    .pipe(wiredep(options))
+    .pipe($.inject(gulp.src(gulpConfig.jsFiles)))
+    .pipe(gulp.dest(gulpConfig.client));
+});
+
 gulp.task('browserSync', function(){
   startBrowerSync();
 });
@@ -52,7 +63,11 @@ function startBrowerSync(){
     server: {
       baseDir: "./"
     },
-		files: [],
+		files: [
+      gulpConfig.clientApp + '**/*.*',
+      gulpConfig.client + 'index.html',
+      gulpConfig.client + 'styles.css',
+    ],
 		ghostMode: {
 			clicks: true,
 			location: false,
