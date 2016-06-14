@@ -11,5 +11,12 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "es6-shim": "^0.35.1",
+    "systemjs": "*",
+    "rxjs": "^4.1.0",
+    "router": "^1.0.6",
+    "angular2-build": "^2.0.0-alpha.34"
+  }
 }
