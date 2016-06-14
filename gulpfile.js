@@ -6,6 +6,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var typescript = require('gulp-typescript');
 var gulpPrint = require('gulp-print');
 var gulpIf = require('gulp-if');
+var browserSync = require('browser-sync').create();
 
 var args = require('yargs').argv;
 
@@ -13,6 +14,10 @@ var gulpConfig = require('./gulp.config')();
 var tsConfig = require('./tsconfig.json');
 
 var $ = require('gulp-load-plugins')({lazy: true});
+
+gulp.task('browserSync', function(){
+  startBrowerSync();
+});
 
 gulp.task('help', $.taskListing);
 gulp.task('default', ['help']);
@@ -41,6 +46,29 @@ gulp.task('clean-build', function(done){
 gulp.task('test', function(done){
   log('test');
 });
+
+function startBrowerSync(){
+	var options = {
+    server: {
+      baseDir: "./"
+    },
+		files: [],
+		ghostMode: {
+			clicks: true,
+			location: false,
+			forms: true,
+			scroll: true
+		},
+		injectChanges: true,
+		logFileChanges: true,
+		logLevel: 'debug',
+		logPrefix: 'gulp-patterns',
+		notify: true,
+		reloadDelay: 1000
+	};
+  
+  browserSync.init(options);
+}
 
 function clean(path, done){
   log('Cleaning: ' + $.util.colors.blue(path));
